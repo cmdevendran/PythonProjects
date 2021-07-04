@@ -1,3 +1,7 @@
+# /** 
+# This file used to monitor unix machine CPU Temp
+# **/
+
 import os
 from time import sleep, strftime, time
 import matplotlib.pyplot as plt
