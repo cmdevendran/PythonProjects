@@ -11,16 +11,21 @@ plt.ion()
 x = []
 y = []
 
+is5min = false
+
 def write_temp(temp):
     with open("Linux_cpu_temp.csv", "a") as log:
         log.write("{0},{1}\n".format(strftime("%Y-%m-%d %H:%M:%S"),str(temp)))
 
 def graph(temp):
     y.append(temp)
-    x.append(time())
+    t = strftime("%H:%M:%S")
+    x.append(t)
+    
     plt.clf()
-    plt.scatter(x,y)
-    plt.plot(x,y)
+    #plt.scatter(x,y)
+    plt.plot(x,y,'-')
+    plt.xticks(rotation=90)
     plt.draw()
 
 def getTemp():
@@ -34,5 +39,5 @@ while True:
         cel = getTemp()
         write_temp(cel)
         graph(cel)
-        sleep(2)
+       # sleep(2)
         plt.pause(1)
